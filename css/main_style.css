@@ -1,0 +1,235 @@
+:root{
+    --blue: #061551;
+    --light-blue: #0cdde8;
+    --white: #FFF;
+    --light-purple: #854dff;
+    --purple: #5933aa;
+    --black: #000;
+    --translucent-black: rgba(0, 0, 0, 0.5);
+    --titles: 'Raleway', cursive;
+    --paragraph: 'Mulish', sans-serif;
+}
+html{
+    /* 1rem = 10px */
+    box-sizing: border-box;
+    font-size: 62.5%;
+}
+body{
+    font-size: 1.6rem;
+    overflow-x: hidden;
+}
+*, *::after, *::before{
+    box-sizing: inherit;
+}
+
+/* globals */
+.container{
+    max-width: 130rem;
+    margin: 0 auto;
+    width: 94%;
+}
+h1, h2{
+    font-family: var(--titles);
+}
+label, select, a{
+    font-family: var(--paragraph);
+}
+.show{
+    display: flex;
+}
+.hide{
+    display: none;
+}
+@keyframes sliding-in{
+    100%{
+        transform: translateX(0%);
+    }
+    0%{
+        transform: translateX(100%);
+    }
+}
+
+/* header */
+.head{
+    background-color: var(--blue);
+    position: sticky;
+    top: 0;
+    z-index: 4;
+}
+.head-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.page-name h1{
+    color: var(--white);
+    font-size: 4rem;
+    font-weight: bold;
+}
+.logo, .page-name{
+    z-index: 2;
+}
+
+/* lateral menu */
+.close-button{
+    font-size: 4rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: var(--white);
+    position: absolute;
+    top: 0;
+    right: 5rem;
+    user-select: none;
+    font-family: var(--paragraph);
+}
+.close-button:hover{
+    color: var(--light-purple);
+}
+.full-screen{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--translucent-black);
+    z-index: 4;
+}
+.navigation a{
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 2.2rem;
+    padding: 1.5rem;
+    display: block;
+    transition: color 0.2s ease-in-out;
+    text-align: center;
+    color: var(--white);
+}
+@media(min-width:768px){
+    .navigation a{
+        text-align: left;
+    }
+}
+.navigation{
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 40rem;
+    padding: 3rem 4rem;
+    background-color: var(--black);
+    animation: sliding-in 0.5s ease-in-out;
+    z-index: 5;
+}
+.navigation a:hover{
+    color: var(--light-blue);
+}
+.navigation a:first-of-type{
+    margin-top: 5rem;
+}
+.lat-menu{
+    margin-top: 0.8rem;
+    cursor: pointer;
+}
+.lat-menu:hover{
+    color: var(--light-blue);
+}
+.lat-menu span{
+    background-color: var(--white);
+    display: block;
+    width: 5rem;
+    height: 0.4rem;
+    margin-bottom: 0.8rem;
+    border-radius: 0.2rem;
+}
+
+/* Content */
+@media(min-width: 768px){
+    .content{
+        display: flex;
+        justify-content: space-between;
+    }
+}
+.filters{
+    background-color: #134639;
+    min-width: 20rem;
+    display: flex;
+    background-image: url(../media/filters_banner.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: repeat-y;
+    z-index: 1;
+}
+@media(min-width: 768px){
+    .filters-container{
+        position: absolute;
+        top: 12rem;
+        left: 2rem;
+    }
+}
+.filters-container{
+    display: block;
+}
+.filters h2{
+    color: var(--white);
+    text-align: center;
+}
+.filter{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+.filter label{
+    color: var(--white);
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    width: 100%;
+}
+select{
+    font-weight: bold;
+    width: 100%;
+}
+.gallery{
+    padding: 1.5rem 2.6rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(26rem, 1fr));
+    gap: 1.1rem 2.6rem;
+    background: linear-gradient(150deg, var(--white), silver);
+    z-index: 1;
+}
+.img-container img{
+    width: 100%;
+    cursor: pointer;
+    border-radius: 0.5rem;
+    transition: 0.2s ease-in-out;
+    border: solid 1px var(--black);
+}
+.img-container p{
+    display: none;
+}
+.img-container img:hover{
+    transform: scale(1.15);
+}
+
+/* To open the selected image */
+.full-img{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+}
+.full-img img{
+    height: 90%;
+}
+.full-img span{
+    position: absolute;
+    top: 5%;
+    right: 10%;
+    font-size: 3rem;
+    color: var(--white);
+    cursor: pointer;
+}
